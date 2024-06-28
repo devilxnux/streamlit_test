@@ -1,8 +1,9 @@
 import streamlit as st
 from st_aggrid import AgGrid
 import pandas as pd
-df_data = pd.read_csv("sample_data/house_clean.csv")
+st.set_page_config(page_title='Demo Streamlit', page_icon=':material/family_link:')
 
+df_data = pd.read_csv("sample_data/house_clean.csv")
 st.subheader('Menampilkan Tabel')
 st.write('Menampilkan dataframe dengan:')
 tab_df, tab_agg = st.tabs(['dataframe', 'ag-grid'])
