@@ -11,5 +11,6 @@ def main():
         ### Sub Subheader''')
     st.write('Some Phytagorean Equation:')
     st.latex('c^2 = a^2+b^2')
+    st.subheader('⬅️ Next page? Sidebar!')
 if __name__ == '__main__':
     main()
