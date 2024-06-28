@@ -11,7 +11,12 @@ def main():
         ### Sub Subheader''')
     st.write('Some Phytagorean Equation:')
     st.latex('c^2 = a^2+b^2')
-    AgGrid(df_data, height=160, use_container_width=True)
+    st.write('Menampilkan dataframe dengan:')
+    tab_df, tab_agg = st.tabs(['dataframe', 'ag-grid'])
+    with tab_df:
+        st.dataframe(df_data)
+    with tab_agg:
+        AgGrid(df_data, height=160, use_container_width=True)
     st.metric(label='Temperature', value='70 °C', delta='-1.2 °C')
 if __name__ == '__main__':
     main()
