@@ -3,7 +3,7 @@ from st_aggrid import AgGrid
 import pandas as pd
 df_data = pd.read_csv("sample_data/house_clean.csv")
 def main():
-    st.header('This is Header')
+    st.header('Halaman Streamlit Dhipo Alam')
     st.subheader('This is Subheader')
     st.markdown('''
         # Rendering Markdown
