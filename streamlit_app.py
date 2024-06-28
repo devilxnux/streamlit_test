@@ -11,7 +11,7 @@ def main():
         ### Sub Subheader''')
     st.write('Some Phytagorean Equation:')
     st.latex('c^2 = a^2+b^2')
-    st.AgGrid(df_data, height=160, use_container_width=True)
+    AgGrid(df_data, height=160, use_container_width=True)
     st.metric(label='Temperature', value='70 °C', delta='-1.2 °C')
 if __name__ == '__main__':
     main()
