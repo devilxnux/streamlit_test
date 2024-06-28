@@ -12,5 +12,9 @@ def main():
         ### Sub Subheader''')
     st.write('Some Phytagorean Equation:')
     st.latex('c^2 = a^2+b^2')
+    st.navigation([
+        st.Page('streamlit_app.py', title='Home', icon=':material/home:'),
+        st.Page('pages/playgrounds.py', title='Demo', icon=':material/family_link:'),
+    ])
 if __name__ == '__main__':
     main()
