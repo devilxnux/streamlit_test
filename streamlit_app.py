@@ -29,7 +29,7 @@ def main():
         st.write('Anda setuju!')
     else:
         st.write('Ada TIDAK setuju!')
-    radio_nilai = st.radio('Berapa kali Anda olahraga dalam seminggu?', [0, 1, 2, 3, 4, 5])
+    radio_nilai = st.radio('Berapa kali Anda olahraga dalam seminggu?', [0, 1, 2, 3, 4, 5], horizontal=True)
     if radio_nilai > 2:
         st.write('Luar biasa! Pertahankan kebiasaan baik Anda!')
     elif radio_nilai > 0:
