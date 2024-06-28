@@ -14,7 +14,7 @@ def main():
     st.write('Menampilkan dataframe dengan:')
     tab_df, tab_agg = st.tabs(['dataframe', 'ag-grid'])
     with tab_df:
-        st.dataframe(df_data)
+        st.dataframe(df_data, height=160, use_container_width=True)
     with tab_agg:
         AgGrid(df_data, height=160, use_container_width=True)
     st.metric(label='Temperature', value='70 °C', delta='-1.2 °C')
