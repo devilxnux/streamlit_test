@@ -12,12 +12,14 @@ def main():
         ### Sub Subheader''')
     st.write('Some Phytagorean Equation:')
     st.latex('c^2 = a^2+b^2')
+    st.subheader('Menampilkan Tabel')
     st.write('Menampilkan dataframe dengan:')
     tab_df, tab_agg = st.tabs(['dataframe', 'ag-grid'])
     with tab_df:
         st.dataframe(df_data, height=160, use_container_width=True)
     with tab_agg:
         AgGrid(df_data, height=160, use_container_width=True)
+    st.subheader('Formulir')
     with st.container(border=True):
         test_button = st.button('Hello!')
         if test_button:
@@ -37,6 +39,7 @@ def main():
             st.write('Sudah bagus! Tapi dapat ditingkatkan!')
         else:
             st.write('Mulailah berolahraga hari ini!')
+    st.subheader('Gambar dalam kolom:')
     cols_gambar = st.columns([1, 2, 1])
     images = [[
         'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
