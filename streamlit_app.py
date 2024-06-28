@@ -60,5 +60,7 @@ def main():
                 st.image(image)
     with st.sidebar:
         st.metric(label='Temperature', value='70 °C', delta='-1.2 °C')
+    
+    st.line_chart(df_data, x='grade', y='price')
 if __name__ == '__main__':
     main()
