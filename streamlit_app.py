@@ -2,6 +2,7 @@ import streamlit as st
 from st_aggrid import AgGrid
 import pandas as pd
 df_data = pd.read_csv("sample_data/house_clean.csv")
+
 def main():
     st.header('Halaman Streamlit Dhipo Alam')
     st.subheader('This is Subheader')
@@ -36,7 +37,24 @@ def main():
             st.write('Sudah bagus! Tapi dapat ditingkatkan!')
         else:
             st.write('Mulailah berolahraga hari ini!')
-    
+    cols_gambar = st.columns([1, 2, 1])
+    images = [[
+        'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        'https://images.pexels.com/photos/19640755/pexels-photo-19640755.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=279.825&fit=crop&h=453.05'
+        'https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=600'
+    ], [
+        'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=600'
+        'https://images.pexels.com/photos/1805164/pexels-photo-1805164.jpeg?auto=compress&cs=tinysrgb&w=600',
+        'https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg?auto=compress&cs=tinysrgb&w=600'
+    ], [
+        'https://images.pexels.com/photos/2013665/pexels-photo-2013665.jpeg?auto=compress&cs=tinysrgb&w=600',
+        'https://images.pexels.com/photos/3586056/pexels-photo-3586056.jpeg?auto=compress&cs=tinysrgb&w=600',
+        'https://images.pexels.com/photos/3432929/pexels-photo-3432929.jpeg?auto=compress&cs=tinysrgb&w=600'
+    ]]
+    for colnum, col in enumerate(cols_gambar):
+        with col:
+            for image in images[colnum]:
+                st.image(image)
     with st.sidebar:
         st.metric(label='Temperature', value='70 °C', delta='-1.2 °C')
 if __name__ == '__main__':
