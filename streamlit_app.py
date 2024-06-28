@@ -32,7 +32,7 @@ def main():
     radio_nilai = st.radio('Berapa kali Anda olahraga dalam seminggu?', [1, 2, 3, 4, 5])
     if radio_nilai > 2:
         st.write('Luar biasa! Pertahankan kebiasaan baik Anda!')
-    if radio_nilai > 0:
+    elif radio_nilai > 0:
         st.write('Sudah bagus! Tapi dapat ditingkatkan!')
     else:
         st.write('Mulailah berolahraga hari ini!')
