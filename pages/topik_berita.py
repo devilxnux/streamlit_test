@@ -39,7 +39,11 @@ def page_2():
     [Indosum Google Drive](https://drive.google.com/file/d/1OgYbPfXFAv3TbwP1Qcwt_CC9cVWSJaco/view)
     ## Deskripsi
     Dataset Indosum merupakan corpus hasil scrapping berita dari beberapa sumber berita daring (e.g.: CNN Indonésia, Merdeka, dll).
+
+
+
     Referensi:
+
     Kurniawan, K., & Louvan, S. (2018). IndoSum: A New Benchmark Dataset for Indonesian Text Summarization. In 2018 International Conference on Asian Language Processing (IALP) (pp. 215–220). Bandung, Indonesia: IEEE. https://doi.org/10.1109/IALP.2018.8629109
     ''')
 
