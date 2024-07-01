@@ -1,6 +1,8 @@
 import streamlit as st
 import pickle, re
 
+TOPIK_BERITA_URL='https://dhipo-ku.streamlit.app/topik_berita'
+
 def preprocess_text(text):
     new_text = re.sub(r'\W', ' ', text) # buang karakter non alphanumeric
     return new_text
@@ -41,9 +43,9 @@ def page_5():
 
 with st.sidebar:
     selected_style = 'style="font-weight: bolder; text-decoration: underline;"'
-    for idx, item in enumerate(pages):
-        st.html(f"")
+    for idx, judul in enumerate(pages):
+        st.link(f"{TOPIK_BERITA_URL}?page={ idx }, label=judul")
 
 page_func = globals().get[f"page_{page}"]
 if not page_func is None:
-    page_func() 
+    page_func()
