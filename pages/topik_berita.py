@@ -11,7 +11,7 @@ def predict(pipeline, text):
     return predicted_topic
 
 pipeline = pickle.load(open('category_pipeline.pkl', 'rb'))
-page = st.query_params['page']
+page = st.query_params.get('page')
 def page_1():
     st.subheader('Tugas Kelompok DJP II')
     st.header('Klasifikasi Topik atas Judul Berita')
