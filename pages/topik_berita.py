@@ -10,7 +10,7 @@ def predict(pipeline, text):
     predicted_topic = pipeline.predict([preprocessed_text])[0]
     return predicted_topic
 
-pipeline = pickle.load(open('../category_pipeline.pkl', 'rb'))
+pipeline = pickle.load(open('category_pipeline.pkl', 'rb'))
 
 input_text = st.text_area('Judul Berita')
 button_predict = st.button('Klasifikasikan Topik')
