@@ -44,7 +44,7 @@ def page_5():
 with st.sidebar:
     selected_style = 'style="font-weight: bolder; text-decoration: underline;"'
     for idx, judul in enumerate(pages):
-        st.link(f"{TOPIK_BERITA_URL}?page={ idx }", label=judul)
+        st.page_link(f"{TOPIK_BERITA_URL}?page={ idx }", label=judul)
 
 page_func = globals().get[f"page_{page}"]
 if not page_func is None:
