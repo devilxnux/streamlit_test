@@ -11,16 +11,17 @@ def predict(pipeline, text):
     return predicted_topic
 
 pipeline = pickle.load(open('category_pipeline.pkl', 'rb'))
+pages = ['Judul', 'Analisis Topik', 'Data Sumber', 'Eksplorasi Data', 'Pemodelan', 'Demo']
 page = st.query_params.get('page')
-def page_1():
+def page_0():
     st.subheader('Tugas Kelompok DJP II')
     st.header('Klasifikasi Topik atas Judul Berita')
     st.subheader('Memanfaatkan Teknik NLP')
 
-def page_2():
+def page_1():
     st.header('Analisis Topik')
     st.markdown('''
-    ## Analisis Topik
+    ## Kategori Analisis Topik
     ![Modelling vs Classification](https://cdn.prod.website-files.com/5fb24a974499e90dae242d98/63317613765082e144c40ff8_Topic%20Modeling%20vs%20Text%20Classification.png)
     
     ## Manfaat
@@ -29,7 +30,7 @@ def page_2():
     - Analisa feedback stakeholder
     ''')
 
-def page_6():
+def page_5():
     input_text = st.text_area('Judul Berita')
     button_predict = st.button('Klasifikasikan Topik')
     if button_predict:
@@ -40,14 +41,9 @@ def page_6():
 
 with st.sidebar:
     selected_style = 'style="font-weight: bolder; text-decoration: underline;"'
-    st.html(f"<a {selected_style if page == '1' else ''} href=\"?page=1\">Judul</a>")
-    st.html(f"<a {selected_style if page == '2' else ''} href=\"?page=2\">Analisis Topik</a>")
-    st.html(f"<a {selected_style if page == '3' else ''} href=\"?page=3\">Data Sumber</a>")
-    st.html(f"<a {selected_style if page == '4' else ''} href=\"?page=4\">Eksplorasi Data</a>")
-    st.html(f"<a {selected_style if page == '5' else ''} href=\"?page=5\">Pemodelan</a>")
-    st.html(f"<a {selected_style if page == '6' else ''} href=\"?page=6\">Demo</a>")
+    for idx, item in enumerate(pages):
+        st.html(f"")
 
-if page == '2':
-    page_2()
-else:
-    page_1()
+page_func = globals().get[f"page_{page}"]
+if not page_func is None:
+    page_func() 
