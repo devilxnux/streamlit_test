@@ -1,7 +1,7 @@
 import pickle
 import streamlit as st
 
-with open('../knn_model.pkl', mode='rb') as file:
+with open('knn_model.pkl', mode='rb') as file:
     loaded_model = pickle.load(file=file)
 
 st.subheader('Kualitas Udara')
