@@ -13,7 +13,7 @@ def predict(pipeline, text):
     return predicted_topic
 
 pipeline = pickle.load(open('category_pipeline.pkl', 'rb'))
-pages = ['Judul', 'Analisis Topik', 'Data Sumber', 'Eksplorasi Data', 'Pemodelan', 'Demo']
+pages = ['Judul', 'Analisis Topik', 'Data Sumber', 'Penyiapan Data', 'Pemodelan', 'Demo']
 page = st.query_params.get('page')
 def page_0():
     st.subheader('Tugas Kelompok DJP II')
@@ -47,6 +47,29 @@ def page_2():
     Kurniawan, K., & Louvan, S. (2018). IndoSum: A New Benchmark Dataset for Indonesian Text Summarization. In 2018 International Conference on Asian Language Processing (IALP) (pp. 215–220). Bandung, Indonesia: IEEE. https://doi.org/10.1109/IALP.2018.8629109
     ''')
 
+def page_3():
+    st.header('Penyiapan Data')
+    st.subheader('Eksplorasi')
+    "---"
+    st.subheader('Pembersihan')
+    "---"
+    st.subheader('Standardisasi')
+
+def page_4():
+    st.header('Pemodelan')
+    st.markdown('''
+    ## Alur Umum
+    Teks &rarr; Vektorisasi &rarr; Training
+    
+    ## Algoritma Decision Tree
+    ## Algoritma Random Forrest
+    ## Algoritma SVM
+    ## Algoritma Multinomial NB
+
+    ## Class Imbalance &rarr; SMOTE
+    
+    ''')
+
 def page_5():
     input_text = st.text_area('Judul Berita')
     button_predict = st.button('Klasifikasikan Topik')
@@ -55,6 +78,7 @@ def page_5():
             st.warning('Judul berita kosong!')
         predicted_topic = predict(pipeline, input_text)
         st.write(f"Prediksi Topik: {predicted_topic}")
+
 
 with st.sidebar:
     selected_style = 'style="font-weight: bolder; text-decoration: underline;"'
