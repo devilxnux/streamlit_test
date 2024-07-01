@@ -46,6 +46,6 @@ with st.sidebar:
     for idx, judul in enumerate(pages):
         st.page_link(f"{TOPIK_BERITA_URL}?page={ idx }", label=judul)
 
-page_func = locals().get[f"page_{page}"]
+page_func = locals().get(f"page_{page}")
 if not page_func is None:
     page_func()
