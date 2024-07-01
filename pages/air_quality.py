@@ -1,8 +1,7 @@
 import pickle
 import streamlit as st
 
-with open('knn_model.pkl', mode='rb') as file:
-    loaded_model = pickle.load(file=file)
+loaded_model = pickle.load(open('knn_model.pkl', mode='rb'))
 
 st.subheader('Kualitas Udara')
 val_aqi = st.slider('Air Quality Index', min_value=0.0, max_value=500.0, step=0.1)
