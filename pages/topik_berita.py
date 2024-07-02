@@ -73,7 +73,10 @@ def page_4():
     ## Alur Umum
 
     Teks &rarr; Vektorisasi &rarr; Training
+    
     Algoritma vektorisasi yang digunakan: Tf-Idf
+    ''')
+    st.markdown('''
     ## Algoritma Random Forrest
 
     ```
@@ -173,7 +176,7 @@ weighted avg       1.00      1.00      1.00      3743
    macro avg       1.00      1.00      1.00     18774
 weighted avg       1.00      1.00      1.00     18774
     ```
-    
+
     ''')
 
 def page_5():
