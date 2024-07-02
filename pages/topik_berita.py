@@ -3,6 +3,13 @@ import pickle, re
 
 TOPIK_BERITA_URL='https://dhipo-ku.streamlit.app/topik_berita'
 
+MODELS={
+'Random Forrest': 'rf',
+'Multinomial NB: 'nb',
+'SVM Classification': 'svm',
+'SVM + SMOTE': 'svm_smote',
+}
+
 def preprocess_text(text):
     new_text = re.sub(r'\W', ' ', text) # buang karakter non alphanumeric
     return new_text
@@ -61,7 +68,6 @@ def page_4():
     ## Alur Umum
     Teks &rarr; Vektorisasi &rarr; Training
     
-    ## Algoritma Decision Tree
     ## Algoritma Random Forrest
     ## Algoritma SVM
     ## Algoritma Multinomial NB
@@ -71,6 +77,7 @@ def page_4():
     ''')
 
 def page_5():
+    select_model = st.selectbox('Model yang akan dijalankan', MODELS.keys())
     input_text = st.text_area('Judul Berita')
     button_predict = st.button('Klasifikasikan Topik')
     if button_predict:
