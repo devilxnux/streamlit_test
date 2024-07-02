@@ -161,6 +161,31 @@ weighted avg       0.93      0.93      0.93     18774
 weighted avg       1.00      1.00      1.00      3743
 
     ''')
+    st.markdown('## Class Imbalance &rarr; SMOTE()')
+    st.code('''
+    cat_pipe_svm_smote = Pipeline([
+        ('vectorizer', TfidfVectorizer()),
+        ('upsampler', SMOTE()),
+        ('clf', RandomForestClassifier())
+    ])
+
+    cat_pipe_svm_smote.fit(cat_x_train, cat_y_train)
+    print(classification_report(cat_y_test, cat_pipe_svm_smote.predict(cat_x_test)))
+
+    Hasil:
+              precision    recall  f1-score   support
+
+     hiburan       1.00      1.00      1.00      1803
+   inspirasi       1.00      1.00      1.00       130
+    olahraga       1.00      1.00      1.00      4768
+     showbiz       1.00      1.00      1.00      2578
+ tajuk utama       1.00      1.00      1.00      7192
+   teknologi       1.00      1.00      1.00      2303
+
+    accuracy                           1.00     18774
+   macro avg       1.00      1.00      1.00     18774
+weighted avg       1.00      1.00      1.00     18774
+    ''')
 
 def page_5():
     select_model = st.selectbox('Model yang akan dijalankan', MODELS.keys())
