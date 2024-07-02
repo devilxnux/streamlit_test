@@ -79,7 +79,7 @@ def page_4():
     st.markdown('''
     ## Algoritma Random Forrest
 
-    ```
+    `
     cat_pipe_rf = Pipeline([
         ('vectorizer', TfidfVectorizer()),
         ('clf', RandomForestClassifier())
@@ -91,7 +91,6 @@ def page_4():
     Hasil:
 
                   precision    recall  f1-score   support
-
      hiburan       1.00      1.00      1.00      1803
    inspirasi       1.00      1.00      1.00       130
     olahraga       1.00      1.00      1.00      4768
@@ -102,7 +101,7 @@ def page_4():
     accuracy                           1.00     18774
    macro avg       1.00      1.00      1.00     18774
 weighted avg       1.00      1.00      1.00     18774
-    ```
+    `
     ''')
 
     st.markdown('''
