@@ -83,7 +83,9 @@ def page_5():
     if button_predict:
         if input_text.strip() == '':
             st.warning('Judul berita kosong!')
+            return
         predicted_topic = predict(pipeline, input_text)
+        st.write(f"Judul Berita: {input_text}")
         st.write(f"Prediksi Topik: {predicted_topic}")
 
 
