@@ -19,6 +19,12 @@ def predict(pipeline, text):
     predicted_topic = pipeline.predict([preprocessed_text])[0]
     return predicted_topic
 
+def switch_page_cb(number):
+    def inner_switch_page():
+        page_number = number
+        st.query_params.page = page_number
+    return inner_switch_page
+
 pipeline = pickle.load(open('category_pipeline.pkl', 'rb'))
 pages = ['Judul', 'Analisis Topik', 'Data Sumber', 'Penyiapan Data', 'Pemodelan', 'Demo']
 page = st.query_params.get('page')
@@ -172,7 +178,7 @@ def page_5():
 with st.sidebar:
     selected_style = 'style="font-weight: bolder; text-decoration: underline;"'
     for idx, judul in enumerate(pages):
-        st.page_link(f"{TOPIK_BERITA_URL}?page={ idx }", label=judul)
+        st.button(judul, on_click=switch_page_cb(idx), use_container_width=True)
 
 page_func = locals().get(f"page_{page}")
 if not page_func is None:
