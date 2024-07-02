@@ -73,7 +73,7 @@ def page_4():
     ## Alur Umum
 
     Teks &rarr; Vektorisasi &rarr; Training
-    
+
     Algoritma vektorisasi yang digunakan: Tf-Idf
     ''')
     st.markdown('''
@@ -87,11 +87,9 @@ def page_4():
 
     cat_pipe_rf.fit(cat_x_train, cat_y_train)
     print(classification_report(cat_y_test, cat_pipe_rf.predict(cat_x_test)))
-    ```
 
     Hasil:
 
-    ```
                   precision    recall  f1-score   support
 
      hiburan       1.00      1.00      1.00      1803
@@ -105,7 +103,9 @@ def page_4():
    macro avg       1.00      1.00      1.00     18774
 weighted avg       1.00      1.00      1.00     18774
     ```
+    ''')
 
+    st.markdown('''
     ## Algoritma SVM
 
     ```
@@ -134,7 +134,9 @@ weighted avg       1.00      1.00      1.00     18774
    macro avg       1.00      1.00      1.00      3743
 weighted avg       1.00      1.00      1.00      3743
     ```
-
+    ''')
+    st.markdown(
+    '''
     ## Algoritma Multinomial NB
 
     ```
@@ -146,9 +148,11 @@ weighted avg       1.00      1.00      1.00      3743
     cat_pipe_nb.fit(cat_x_train, cat_y_train)
     print(classification_report(cat_y_test, cat_pipe_nb.predict(cat_x_test)))
     ```
+    ''')
 
+    st.markdown(
+    '''
     ## Class Imbalance &rarr; SMOTE
-
     ```
     cat_pipe_svm_smote = Pipeline([
         ('vectorizer', TfidfVectorizer()),
@@ -158,11 +162,8 @@ weighted avg       1.00      1.00      1.00      3743
 
     cat_pipe_svm_smote.fit(cat_x_train, cat_y_train)
     print(classification_report(cat_y_test, cat_pipe_svm_smote.predict(cat_x_test)))
-    ```
 
     Hasil:
-
-    ```
                   precision    recall  f1-score   support
 
      hiburan       1.00      1.00      1.00      1803
@@ -176,7 +177,6 @@ weighted avg       1.00      1.00      1.00      3743
    macro avg       1.00      1.00      1.00     18774
 weighted avg       1.00      1.00      1.00     18774
     ```
-
     ''')
 
 def page_5():
