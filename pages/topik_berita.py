@@ -204,7 +204,7 @@ def page_5():
 
 with st.sidebar:
     for idx, judul in enumerate(pages):
-        st.button(judul, on_click=switch_page_cb(idx), use_container_width=True)
+        st.button(judul, on_click=switch_page_cb(idx), use_container_width=True, type='primary' if page == idx else 'secondary')
 
 page_func = locals().get(f"page_{page}")
 if not page_func is None:
