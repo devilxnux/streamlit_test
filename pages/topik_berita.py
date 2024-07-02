@@ -25,7 +25,7 @@ def switch_page_cb(number):
         st.query_params.page = page_number
     return inner_switch_page
 
-pipeline = pickle.load(open('category_pipeline.pkl', 'rb'))
+
 pages = ['Judul', 'Analisis Topik', 'Data Sumber', 'Penyiapan Data', 'Pemodelan', 'Demo']
 page = st.query_params.get('page')
 def page_0():
@@ -69,18 +69,12 @@ def page_3():
 
 def page_4():
     st.header('Pemodelan')
-    st.markdown('''
-    ## Alur Umum
-
-    Teks &rarr; Vektorisasi &rarr; Training
-
-    Algoritma vektorisasi yang digunakan: Tf-Idf
-    ''')
-    st.markdown('''
-    ## Algoritma Random Forrest
-
-    `
-    cat_pipe_rf = Pipeline([
+    st.subheader('Alur Umum')
+    st.markdown('Teks &rarr; Vektorisasi &rarr; Training')
+    st.write('Algoritma vektorisasi yang digunakan: Tf-Idf')
+    st.subheader('Algoritma Random Forrest')
+    st.code('''
+     cat_pipe_rf = Pipeline([
         ('vectorizer', TfidfVectorizer()),
         ('clf', RandomForestClassifier())
     ])
@@ -101,13 +95,32 @@ def page_4():
     accuracy                           1.00     18774
    macro avg       1.00      1.00      1.00     18774
 weighted avg       1.00      1.00      1.00     18774
-    `
     ''')
+    st.subheader('Algoritma Multinomial NB')
+    st.code('''
+    cat_pipe_nb = Pipeline([
+        ('vectorizer', TfidfVectorizer()),
+        ('clf', MultinomialNB())
+    ])
+    cat_pipe_nb.fit(cat_x_train, cat_y_train)
+    print(classification_report(cat_y_test, cat_pipe_nb.predict(cat_x_test)))
 
-    st.markdown('''
-    ## Algoritma SVM
+    Hasil:
+              precision    recall  f1-score   support
 
-    ```
+     hiburan       0.92      0.65      0.76      1803
+   inspirasi       0.00      0.00      0.00       130
+    olahraga       0.99      0.98      0.99      4768
+     showbiz       0.91      0.94      0.92      2578
+ tajuk utama       0.90      0.98      0.94      7192
+   teknologi       0.96      0.94      0.95      2303
+
+    accuracy                           0.93     18774
+   macro avg       0.78      0.75      0.76     18774
+weighted avg       0.93      0.93      0.93     18774
+    ''')
+    st.subheader('Algoritma SVM Classification')
+    st.code('''
     cat_pipe_svm = Pipeline([
         ('vectorizer', TfidfVectorizer()),
         ('clf', LinearSVC(dual=True))
@@ -115,11 +128,10 @@ weighted avg       1.00      1.00      1.00     18774
 
     cat_pipe_svm.fit(cat_x_train, cat_y_train)
     print(classification_report(cat_y_dev, cat_pipe.predict(cat_x_dev)))
-    ```
+
 
     Hasil:
 
-    ```
               precision    recall  f1-score   support
 
      hiburan       1.00      1.00      1.00       347
@@ -132,50 +144,7 @@ weighted avg       1.00      1.00      1.00     18774
     accuracy                           1.00      3743
    macro avg       1.00      1.00      1.00      3743
 weighted avg       1.00      1.00      1.00      3743
-    ```
-    ''')
-    st.markdown(
-    '''
-    ## Algoritma Multinomial NB
 
-    ```
-    cat_pipe_nb = Pipeline([
-        ('vectorizer', TfidfVectorizer()),
-        ('clf', MultinomialNB())
-    ])
-
-    cat_pipe_nb.fit(cat_x_train, cat_y_train)
-    print(classification_report(cat_y_test, cat_pipe_nb.predict(cat_x_test)))
-    ```
-    ''')
-
-    st.markdown(
-    '''
-    ## Class Imbalance &rarr; SMOTE
-    ```
-    cat_pipe_svm_smote = Pipeline([
-        ('vectorizer', TfidfVectorizer()),
-        ('upsampler', SMOTE()),
-        ('clf', RandomForestClassifier())
-    ])
-
-    cat_pipe_svm_smote.fit(cat_x_train, cat_y_train)
-    print(classification_report(cat_y_test, cat_pipe_svm_smote.predict(cat_x_test)))
-
-    Hasil:
-                  precision    recall  f1-score   support
-
-     hiburan       1.00      1.00      1.00      1803
-   inspirasi       1.00      1.00      1.00       130
-    olahraga       1.00      1.00      1.00      4768
-     showbiz       1.00      1.00      1.00      2578
- tajuk utama       1.00      1.00      1.00      7192
-   teknologi       1.00      1.00      1.00      2303
-
-    accuracy                           1.00     18774
-   macro avg       1.00      1.00      1.00     18774
-weighted avg       1.00      1.00      1.00     18774
-    ```
     ''')
 
 def page_5():
@@ -186,13 +155,14 @@ def page_5():
         if input_text.strip() == '':
             st.warning('Judul berita kosong!')
             return
+        pipeline = pickle.load(open(f"category_pipeline_{MODELS.get(select_model)}.pkl", 'rb'))
         predicted_topic = predict(pipeline, input_text)
         st.write(f"Judul Berita: {input_text}")
-        st.write(f"Prediksi Topik: {predicted_topic}")
+        st.write(f"Prediksi Topik:")
+        st.success(predicted_topic)
 
 
 with st.sidebar:
-    selected_style = 'style="font-weight: bolder; text-decoration: underline;"'
     for idx, judul in enumerate(pages):
         st.button(judul, on_click=switch_page_cb(idx), use_container_width=True)
 
