@@ -71,9 +71,11 @@ def page_4():
     st.header('Pemodelan')
     st.markdown('''
     ## Alur Umum
+
     Teks &rarr; Vektorisasi &rarr; Training
     Algoritma vektorisasi yang digunakan: Tf-Idf
     ## Algoritma Random Forrest
+
     ```
     cat_pipe_rf = Pipeline([
         ('vectorizer', TfidfVectorizer()),
@@ -83,7 +85,9 @@ def page_4():
     cat_pipe_rf.fit(cat_x_train, cat_y_train)
     print(classification_report(cat_y_test, cat_pipe_rf.predict(cat_x_test)))
     ```
+
     Hasil:
+
     ```
                   precision    recall  f1-score   support
 
@@ -98,7 +102,9 @@ def page_4():
    macro avg       1.00      1.00      1.00     18774
 weighted avg       1.00      1.00      1.00     18774
     ```
+
     ## Algoritma SVM
+
     ```
     cat_pipe_svm = Pipeline([
         ('vectorizer', TfidfVectorizer()),
@@ -107,9 +113,10 @@ weighted avg       1.00      1.00      1.00     18774
 
     cat_pipe_svm.fit(cat_x_train, cat_y_train)
     print(classification_report(cat_y_dev, cat_pipe.predict(cat_x_dev)))
-
     ```
+
     Hasil:
+
     ```
               precision    recall  f1-score   support
 
@@ -124,7 +131,9 @@ weighted avg       1.00      1.00      1.00     18774
    macro avg       1.00      1.00      1.00      3743
 weighted avg       1.00      1.00      1.00      3743
     ```
+
     ## Algoritma Multinomial NB
+
     ```
     cat_pipe_nb = Pipeline([
         ('vectorizer', TfidfVectorizer()),
@@ -134,7 +143,9 @@ weighted avg       1.00      1.00      1.00      3743
     cat_pipe_nb.fit(cat_x_train, cat_y_train)
     print(classification_report(cat_y_test, cat_pipe_nb.predict(cat_x_test)))
     ```
+
     ## Class Imbalance &rarr; SMOTE
+
     ```
     cat_pipe_svm_smote = Pipeline([
         ('vectorizer', TfidfVectorizer()),
@@ -145,7 +156,9 @@ weighted avg       1.00      1.00      1.00      3743
     cat_pipe_svm_smote.fit(cat_x_train, cat_y_train)
     print(classification_report(cat_y_test, cat_pipe_svm_smote.predict(cat_x_test)))
     ```
+
     Hasil:
+
     ```
                   precision    recall  f1-score   support
 
@@ -160,6 +173,7 @@ weighted avg       1.00      1.00      1.00      3743
    macro avg       1.00      1.00      1.00     18774
 weighted avg       1.00      1.00      1.00     18774
     ```
+    
     ''')
 
 def page_5():
