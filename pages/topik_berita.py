@@ -60,10 +60,27 @@ def page_2():
 def page_3():
     st.header('Penyiapan Data')
     st.subheader('Eksplorasi')
+    st.code('''
+    Data columns (total 7 columns):
+    #   Column       Non-Null Count  Dtype 
+    ---  ------       --------------  ----- 
+    0   category     71353 non-null  object
+    1   gold_labels  71353 non-null  object
+    2   id           71353 non-null  object
+    3   paragraphs   71353 non-null  object
+    4   source       71353 non-null  object
+    5   source_url   71353 non-null  object
+    6   summary      71353 non-null  object
+    ''')
     "---"
-    st.subheader('Pembersihan')
+    st.subheader('Pembersihan & Standardisasi')
+    st.markdown('''
+    - Pembersihan stopwords menggunakan dataset https://github.com/masdevid/ID-Stopwords/
+    - Pembersihan tanda baca
+    - Standardisasi lowercase
+    - Stardisasi spasi
+    ''')
     "---"
-    st.subheader('Standardisasi')
 
 def page_4():
     st.header('Pemodelan')
