@@ -5,7 +5,7 @@ TOPIK_BERITA_URL='https://dhipo-ku.streamlit.app/topik_berita'
 
 MODELS={
 'Random Forrest': 'rf',
-'Multinomial NB: 'nb',
+'Multinomial NB': 'nb',
 'SVM Classification': 'svm',
 'SVM + SMOTE': 'svm_smote',
 }
