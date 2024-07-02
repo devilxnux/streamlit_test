@@ -50,7 +50,6 @@ def page_2():
 
 
     Referensi:
-
     Kurniawan, K., & Louvan, S. (2018). IndoSum: A New Benchmark Dataset for Indonesian Text Summarization. In 2018 International Conference on Asian Language Processing (IALP) (pp. 215–220). Bandung, Indonesia: IEEE. https://doi.org/10.1109/IALP.2018.8629109
     ''')
 
@@ -67,13 +66,94 @@ def page_4():
     st.markdown('''
     ## Alur Umum
     Teks &rarr; Vektorisasi &rarr; Training
-    
+    Algoritma vektorisasi yang digunakan: Tf-Idf
     ## Algoritma Random Forrest
-    ## Algoritma SVM
-    ## Algoritma Multinomial NB
+    ```
+    cat_pipe_rf = Pipeline([
+        ('vectorizer', TfidfVectorizer()),
+        ('clf', RandomForestClassifier())
+    ])
 
+    cat_pipe_rf.fit(cat_x_train, cat_y_train)
+    print(classification_report(cat_y_test, cat_pipe_rf.predict(cat_x_test)))
+    ```
+    Hasil:
+    ```
+                  precision    recall  f1-score   support
+
+     hiburan       1.00      1.00      1.00      1803
+   inspirasi       1.00      1.00      1.00       130
+    olahraga       1.00      1.00      1.00      4768
+     showbiz       1.00      1.00      1.00      2578
+ tajuk utama       1.00      1.00      1.00      7192
+   teknologi       1.00      1.00      1.00      2303
+
+    accuracy                           1.00     18774
+   macro avg       1.00      1.00      1.00     18774
+weighted avg       1.00      1.00      1.00     18774
+    ```
+    ## Algoritma SVM
+    ```
+    cat_pipe_svm = Pipeline([
+        ('vectorizer', TfidfVectorizer()),
+        ('clf', LinearSVC(dual=True))
+    ])
+
+    cat_pipe_svm.fit(cat_x_train, cat_y_train)
+    print(classification_report(cat_y_dev, cat_pipe.predict(cat_x_dev)))
+
+    ```
+    Hasil:
+    ```
+              precision    recall  f1-score   support
+
+     hiburan       1.00      1.00      1.00       347
+   inspirasi       1.00      1.00      1.00        21
+    olahraga       1.00      1.00      1.00       928
+     showbiz       1.00      1.00      1.00       495
+ tajuk utama       1.00      1.00      1.00      1445
+   teknologi       1.00      1.00      1.00       507
+
+    accuracy                           1.00      3743
+   macro avg       1.00      1.00      1.00      3743
+weighted avg       1.00      1.00      1.00      3743
+    ```
+    ## Algoritma Multinomial NB
+    ```
+    cat_pipe_nb = Pipeline([
+        ('vectorizer', TfidfVectorizer()),
+        ('clf', MultinomialNB())
+    ])
+
+    cat_pipe_nb.fit(cat_x_train, cat_y_train)
+    print(classification_report(cat_y_test, cat_pipe_nb.predict(cat_x_test)))
+    ```
     ## Class Imbalance &rarr; SMOTE
-    
+    ```
+    cat_pipe_svm_smote = Pipeline([
+        ('vectorizer', TfidfVectorizer()),
+        ('upsampler', SMOTE()),
+        ('clf', RandomForestClassifier())
+    ])
+
+    cat_pipe_svm_smote.fit(cat_x_train, cat_y_train)
+    print(classification_report(cat_y_test, cat_pipe_svm_smote.predict(cat_x_test)))
+    ```
+    Hasil:
+    ```
+                  precision    recall  f1-score   support
+
+     hiburan       1.00      1.00      1.00      1803
+   inspirasi       1.00      1.00      1.00       130
+    olahraga       1.00      1.00      1.00      4768
+     showbiz       1.00      1.00      1.00      2578
+ tajuk utama       1.00      1.00      1.00      7192
+   teknologi       1.00      1.00      1.00      2303
+
+    accuracy                           1.00     18774
+   macro avg       1.00      1.00      1.00     18774
+weighted avg       1.00      1.00      1.00     18774
+    ```
     ''')
 
 def page_5():
